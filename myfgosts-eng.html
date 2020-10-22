@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>FGO status calculator for custom servants</title>
+<link rel="stylesheet" type="text/css">
+<script src="jquery-1.12.3.min.js"></script>
+<script src="scriptfgos.js"></script>
+<style>
+    textarea {
+        min-width: 100px;
+        min-height: 80px;
+        max-width:  400px;
+        max-height: 200px;
+    }
+</style>
+</head>
+<!--Made in 貴金属@silverclock96-->
+<body>
+<form>
+<p>FGO status calculator for custom servants</p>
+
+<p>Originated by 貴金属(@silverclock96)<br />
+<a href="http://you96.web.fc2.com/library/huebutop.html" target="_top">如月電脳図書館</a></p>
+
+<p>Comments from @silverclock96:<br />
+Stats of servants in FGO depends on his/her parameters.<br />Hearing that, I made this webpage that converts "custom servant"'s parameters into Fate/Grand Order status.<br />Please use this webpage when you make custom FGO card illust and need to fill his/her stats, or just imagine something.<br /><br /></p>
+
+<p>Rarity<br /> <input type="radio" id="R0" name="Rare" value="R0" /> <label for="R0">☆0</label> <input type="radio" id="R1" name="Rare" value="R1" /> <label for="R1">☆1</label> <input type="radio" id="R1" name="Rare" value="R2" /> <label for="R2">☆2</label> <input type="radio" id="R1" name="Rare" value="R3" /> <label for="R3">☆3</label> <input type="radio" id="R1" name="Rare" value="R4" /> <label for="R4">☆4</label> <input type="radio" id="R1" name="Rare" value="R5" /> <label for="R5">☆5</label></p>
+
+<p>Class<br />
+ <input type="radio" id="Saber" name="Class" value="Saber" /> <label for="Saber">Saber</label>
+ <input type="radio" id="Archer" name="Class" value="Archer" /> <label for="Archer">Archer</label>
+ <input type="radio" id="Lancer" name="Class" value="Lancer" /> <label for="Lancer">Lancer</label>
+ <input type="radio" id="Rider" name="Class" value="Rider" /> <label for="Rider">Rider</label>
+ <input type="radio" id="Caster" name="Class" value="Caster" /> <label for="Caster">Caster</label>
+ <input type="radio" id="Assassin" name="Class" value="Assassin" /> <label for="Assassin">Assassin</label>
+ <input type="radio" id="Berserker" name="Class" value="Berserker" /> <label for="Berserker">Berserker</label><br />
+ <input type="radio" id="Shielder" name="Class" value="Shielder" /> <label for="Shielder">Shielder</label>
+ <input type="radio" id="Ruler" name="Class" value="Ruler" /> <label for="Ruler">Ruler</label>
+ <input type="radio" id="Avenger" name="Class" value="Avenger" /> <label for="Avenger">Avenger</label>
+ <input type="radio" id="MoonCancer" name="Class" value="MoonCancer" /> <label for="MoonCancer">MoonCancer</label>
+ <input type="radio" id="Alterego" name="Class" value="Alterego" /> <label for="Alterego">Alterego</label>
+ <input type="radio" id="Foreigner" name="Class" value="Foreigner" /> <label for="Foreigner">Foreigner</label>
+</p>
+
+<p>Tendency of ATK/HP<br /> <input type="radio" id="S1" name="State" value="S1" /> <label for="S1">Most HP</label> <input type="radio" id="S2" name="State" value="S2" /> <label for="S2">More HP</label> <input type="radio" id="S3" name="State" value="S3" /> <label for="S3">Balanced</label> <input type="radio" id="S4" name="State" value="S4" /> <label for="S4">More ATK</label> <input type="radio" id="S5" name="State" value="S5" /> <label for="S5">Most ATK</label> <input type="radio" id="S6" name="State" value="S6" /> <label for="S6">Artoria Lily</label></p>
+
+<p>Attack Type<br /> <input type="radio" id="BMB" name="BM" value="BMB" /> <label for="BMB">Physical</label> <input type="radio" id="BMM" name="BM" value="BMM" /> <label for="BMM">Magical</label></p>
+
+<p>Strength<br /> <input type="radio" id="KinEX" name="Kin" value="KinEX" /> <label for="KinEX">EX</label><br />
+ <input type="radio" id="KinA2" name="Kin" value="KinA2" /> <label for="KinA2">A++</label> <input type="radio" id="KinA1" name="Kin" value="KinA1" /> <label for="KinA1">A+</label> <input type="radio" id="KinA" name="Kin" value="KinA" /> <label for="KinA">A</label> <input type="radio" id="KinAm" name="Kin" value="KinAm" /> <label for="KinAm">A-</label><br />
+ <input type="radio" id="KinB2" name="Kin" value="KinB2" /> <label for="KinB2">B++</label> <input type="radio" id="KinB1" name="Kin" value="KinB1" /> <label for="KinB1">B+</label> <input type="radio" id="KinB" name="Kin" value="KinB" /> <label for="KinB">B</label> <input type="radio" id="KinBm" name="Kin" value="KinBm" /> <label for="KinBm">B-</label><br />
+ <input type="radio" id="KinC2" name="Kin" value="KinC2" /> <label for="KinC2">C++</label> <input type="radio" id="KinC1" name="Kin" value="KinC1" /> <label for="KinC1">C+</label> <input type="radio" id="KinC" name="Kin" value="KinC" /> <label for="KinC">C</label> <input type="radio" id="KinCm" name="Kin" value="KinCm" /> <label for="KinCm">C-</label><br />
+ <input type="radio" id="KinD2" name="Kin" value="KinD2" /> <label for="KinD2">D++</label> <input type="radio" id="KinD1" name="Kin" value="KinD1" /> <label for="KinD1">D+</label> <input type="radio" id="KinD" name="Kin" value="KinD" /> <label for="KinD">D</label> <input type="radio" id="KinDm" name="Kin" value="KinDm" /> <label for="KinDm">D-</label><br />
+ <input type="radio" id="KinE2" name="Kin" value="KinE2" /> <label for="KinE2">E++</label> <input type="radio" id="KinE1" name="Kin" value="KinE1" /> <label for="KinE1">E+</label> <input type="radio" id="KinE" name="Kin" value="KinE" /> <label for="KinE">E</label> <input type="radio" id="KinEm" name="Kin" value="KinEm" /> <label for="KinEm">E-</label>
+</p>
+
+<p>Constitution<br /> <input type="radio" id="TaiEX" name="Tai" value="TaiEX" /> <label for="TaiEX">EX</label><br />
+ <input type="radio" id="TaiA2" name="Tai" value="TaiA2" /> <label for="TaiA2">A++</label> <input type="radio" id="TaiA1" name="Tai" value="TaiA1" /> <label for="TaiA1">A+</label> <input type="radio" id="TaiA" name="Tai" value="TaiA" /> <label for="TaiA">A</label> <input type="radio" id="TaiAm" name="Tai" value="TaiAm" /> <label for="TaiAm">A-</label><br />
+ <input type="radio" id="TaiB2" name="Tai" value="TaiB2" /> <label for="TaiB2">B++</label> <input type="radio" id="TaiB1" name="Tai" value="TaiB1" /> <label for="TaiB1">B+</label> <input type="radio" id="TaiB" name="Tai" value="TaiB" /> <label for="TaiB">B</label> <input type="radio" id="TaiBm" name="Tai" value="TaiBm" /> <label for="TaiBm">B-</label><br />
+ <input type="radio" id="TaiC2" name="Tai" value="TaiC2" /> <label for="TaiC2">C++</label> <input type="radio" id="TaiC1" name="Tai" value="TaiC1" /> <label for="TaiC1">C+</label> <input type="radio" id="TaiC" name="Tai" value="TaiC" /> <label for="TaiC">C</label> <input type="radio" id="TaiCm" name="Tai" value="TaiCm" /> <label for="TaiCm">C-</label><br />
+ <input type="radio" id="TaiD2" name="Tai" value="TaiD2" /> <label for="TaiD2">D++</label> <input type="radio" id="TaiD1" name="Tai" value="TaiD1" /> <label for="TaiD1">D+</label> <input type="radio" id="TaiD" name="Tai" value="TaiD" /> <label for="TaiD">D</label> <input type="radio" id="TaiDm" name="Tai" value="TaiDm" /> <label for="TaiDm">D-</label><br />
+ <input type="radio" id="TaiE2" name="Tai" value="TaiE2" /> <label for="TaiE2">E++</label> <input type="radio" id="TaiE1" name="Tai" value="TaiE1" /> <label for="TaiE1">E+</label> <input type="radio" id="TaiE" name="Tai" value="TaiE" /> <label for="TaiE">E</label> <input type="radio" id="TaiEm" name="Tai" value="TaiEm" /> <label for="TaiEm">E-</label>
+</p>
+
+<p>Agility<br /> <input type="radio" id="BinEX" name="Bin" value="BinEX" /> <label for="BinEX">EX</label><br />
+ <input type="radio" id="BinA2" name="Bin" value="BinA2" /> <label for="BinA2">A++</label> <input type="radio" id="BinA1" name="Bin" value="BinA1" /> <label for="BinA1">A+</label> <input type="radio" id="BinA" name="Bin" value="BinA" /> <label for="BinA">A</label> <input type="radio" id="BinAm" name="Bin" value="BinAm" /> <label for="BinAm">A-</label><br />
+ <input type="radio" id="BinB2" name="Bin" value="BinB2" /> <label for="BinB2">B++</label> <input type="radio" id="BinB1" name="Bin" value="BinB1" /> <label for="BinB1">B+</label> <input type="radio" id="BinB" name="Bin" value="BinB" /> <label for="BinB">B</label> <input type="radio" id="BinBm" name="Bin" value="BinBm" /> <label for="BinBm">B-</label><br />
+ <input type="radio" id="BinC2" name="Bin" value="BinC2" /> <label for="BinC2">C++</label> <input type="radio" id="BinC1" name="Bin" value="BinC1" /> <label for="BinC1">C+</label> <input type="radio" id="BinC" name="Bin" value="BinC" /> <label for="BinC">C</label> <input type="radio" id="BinCm" name="Bin" value="BinCm" /> <label for="BinCm">C-</label><br />
+ <input type="radio" id="BinD2" name="Bin" value="BinD2" /> <label for="BinD2">D++</label> <input type="radio" id="BinD1" name="Bin" value="BinD1" /> <label for="BinD1">D+</label> <input type="radio" id="BinD" name="Bin" value="BinD" /> <label for="BinD">D</label> <input type="radio" id="BinDm" name="Bin" value="BinDm" /> <label for="BinDm">D-</label><br />
+ <input type="radio" id="BinE2" name="Bin" value="BinE2" /> <label for="BinE2">E++</label> <input type="radio" id="BinE1" name="Bin" value="BinE1" /> <label for="BinE1">E+</label> <input type="radio" id="BinE" name="Bin" value="BinE" /> <label for="BinE">E</label> <input type="radio" id="BinEm" name="Bin" value="BinEm" /> <label for="BinEm">E-</label>
+</p>
+
+<p>Magical Power<br /> <input type="radio" id="MarEX" name="Mar" value="MarEX" /> <label for="MarEX">EX</label><br />
+ <input type="radio" id="MarA2" name="Mar" value="MarA2" /> <label for="MarA2">A++</label> <input type="radio" id="MarA1" name="Mar" value="MarA1" /> <label for="MarA1">A+</label> <input type="radio" id="MarA" name="Mar" value="MarA" /> <label for="MarA">A</label> <input type="radio" id="MarAm" name="Mar" value="MarAm" /> <label for="MarAm">A-</label><br />
+ <input type="radio" id="MarB2" name="Mar" value="MarB2" /> <label for="MarB2">B++</label> <input type="radio" id="MarB1" name="Mar" value="MarB1" /> <label for="MarB1">B+</label> <input type="radio" id="MarB" name="Mar" value="MarB" /> <label for="MarB">B</label> <input type="radio" id="MarBm" name="Mar" value="MarBm" /> <label for="MarBm">B-</label><br />
+ <input type="radio" id="MarC2" name="Mar" value="MarC2" /> <label for="MarC2">C++</label> <input type="radio" id="MarC1" name="Mar" value="MarC1" /> <label for="MarC1">C+</label> <input type="radio" id="MarC" name="Mar" value="MarC" /> <label for="MarC">C</label> <input type="radio" id="MarCm" name="Mar" value="MarCm" /> <label for="MarCm">C-</label><br />
+ <input type="radio" id="MarD2" name="Mar" value="MarD2" /> <label for="MarD2">D++</label> <input type="radio" id="MarD1" name="Mar" value="MarD1" /> <label for="MarD1">D+</label> <input type="radio" id="MarD" name="Mar" value="MarD" /> <label for="MarD">D</label> <input type="radio" id="MarDm" name="Mar" value="MarDm" /> <label for="MarDm">D-</label><br />
+ <input type="radio" id="MarE2" name="Mar" value="MarE2" /> <label for="MarE2">E++</label> <input type="radio" id="MarE1" name="Mar" value="MarE1" /> <label for="MarE1">E+</label> <input type="radio" id="MarE" name="Mar" value="MarE" /> <label for="MarE">E</label> <input type="radio" id="MarEm" name="Mar" value="MarEm" /> <label for="MarEm">E-</label>
+</p>
+
+<p>Luck<br /> <input type="radio" id="LucEX" name="Luc" value="LucEX" /> <label for="LucEX">EX</label><br />
+ <input type="radio" id="LucA2" name="Luc" value="LucA2" /> <label for="LucA2">A++</label> <input type="radio" id="LucA1" name="Luc" value="LucA1" /> <label for="LucA1">A+</label> <input type="radio" id="LucA" name="Luc" value="LucA" /> <label for="LucA">A</label> <input type="radio" id="LucAm" name="Luc" value="LucAm" /> <label for="LucAm">A-</label><br />
+ <input type="radio" id="LucB2" name="Luc" value="LucB2" /> <label for="LucB2">B++</label> <input type="radio" id="LucB1" name="Luc" value="LucB1" /> <label for="LucB1">B+</label> <input type="radio" id="LucB" name="Luc" value="LucB" /> <label for="LucB">B</label> <input type="radio" id="LucBm" name="Luc" value="LucBm" /> <label for="LucBm">B-</label><br />
+ <input type="radio" id="LucC2" name="Luc" value="LucC2" /> <label for="LucC2">C++</label> <input type="radio" id="LucC1" name="Luc" value="LucC1" /> <label for="LucC1">C+</label> <input type="radio" id="LucC" name="Luc" value="LucC" /> <label for="LucC">C</label> <input type="radio" id="LucCm" name="Luc" value="LucCm" /> <label for="LucCm">C-</label><br />
+ <input type="radio" id="LucD2" name="Luc" value="LucD2" /> <label for="LucD2">D++</label> <input type="radio" id="LucD1" name="Luc" value="LucD1" /> <label for="LucD1">D+</label> <input type="radio" id="LucD" name="Luc" value="LucD" /> <label for="LucD">D</label> <input type="radio" id="LucDm" name="Luc" value="LucDm" /> <label for="LucDm">D-</label><br />
+ <input type="radio" id="LucE2" name="Luc" value="LucE2" /> <label for="LucE2">E++</label> <input type="radio" id="LucE1" name="Luc" value="LucE1" /> <label for="LucE1">E+</label> <input type="radio" id="LucE" name="Luc" value="LucE" /> <label for="LucE">E</label> <input type="radio" id="LucEm" name="Luc" value="LucEm" /> <label for="LucEm">E-</label>
+</p>
+
+<p>Number of arts cards<br /> <input type="radio" id="A1" name="Arts" value="A1" /> <label for="A1">1 copy</label> <input type="radio" id="A2" name="Arts" value="A2" /> <label for="A2">2 copies</label> <input type="radio" id="A3" name="Arts" value="A3" /> <label for="A3">3 copies</label></p>
+
+<p>Star Generation<br /> <input type="radio" id="SR1" name="Star" value="SR1" checked="checked"> <label for="SR1">Normal</label> <input type="radio" id="SR2" name="Star" value="SR2"> <label for="SR1">Earlier Type</label></p>
+
+<p><button type="button" id="btn">Click here</button></p>
+</form>
+<form>
+<p><textarea id="OutPut" name="OutPut" cols="40" row="6">                
+                ここに出力結果が出ます
+                
+                
+
+</textarea></p>
+</form>
+</body>
+</html>
