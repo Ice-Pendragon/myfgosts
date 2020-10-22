@@ -1,4 +1,4 @@
-## [My FGO Servants Stats Generator]()
+## [My FGO Servants Stats Generator](https://ice-pendragon.github.io/myfgosts/myfgosts.html)
 Now includes MoonCancer, Alterego, Foreigner
 
 [English Version](https://ice-pendragon.github.io/myfgosts/myfgosts-eng.html) (not fully translated)
