@@ -18,6 +18,8 @@ $(function () {
 				0.99, 0.95, 1.05, 1.02, 0.94, 1.0],
 			na:[1.5, 1.55, 1.45, 1.55, 1.6, 1.45, 1.4,
 				1.5, 1.5, 1.45, 1.55, 1.6, 1.5],
+			nd:[3, 3, 4, 3, 3, 4, 5,
+				3, 3, 5, 4, 3, 3],
 			sr:[10, 8, 12, 9, 11, 25, 5,
 				10, 10, 6, 10, 15, 15],
 			sw:[100, 150, 90, 200, 50, 100, 10,
@@ -64,11 +66,9 @@ $(function () {
 		$ClassNumber = $('select[name="Class"]')[0].selectedIndex;
 		console.log('クラス：' + $('select[name="Class"]')[0].value);
 		$('#ClassOut').html($('select[name="Class"]')[0][$ClassNumber].innerHTML);
-		console.log('ClassNumber : ' + $ClassNumber);
 		
 		//Check Tendency of Status
 		$Tendency = parseInt($('[name="State"]:checked').val()) - 1;
-		console.log('Tendency : ' + $Tendency);
 		
 		//Check Parameter
 		$Parameter.STR = $('select[name="Kin"]')[0].selectedIndex;
@@ -76,7 +76,6 @@ $(function () {
 		$Parameter.AGI = $('select[name="Bin"]')[0].selectedIndex;
 		$Parameter.MGI = $('select[name="Mar"]')[0].selectedIndex;
 		$Parameter.LUC = $('select[name="Kou"]')[0].selectedIndex;
-		console.log('Parameter : ' + $Parameter.STR + ', ' + $Parameter.CON + ', ' + $Parameter.AGI + ', ' + $Parameter.MGI + ', ' + $Parameter.LUC);
 		
 		//=======================================
 		document.getElementById("result1").style.visibility = "visible";
@@ -104,6 +103,7 @@ $(function () {
 		$atk[2] = $atk[0] + Math.floor(($atk[1] - $atk[0]) * $grailrate);
 		$hp[2] = $hp[0] + Math.floor(($hp[1] - $hp[0]) * $grailrate);
 		
+		$('#lvOut').html('LV' + $rarepoint.lvmax[$Rarity]);
 		$('#ATKOut1').html($atk[0]);
 		$('#ATKOut2').html($atk[1]);
 		$('#ATKOut3').html($atk[2]);
@@ -125,6 +125,10 @@ $(function () {
 		
 		var NA = Math.floor(100*$classpoint.na[$ClassNumber]*$parapoint.pp[$Parameter.MGI]*$Apoint/parseInt($('[name="AH"]:checked').val()))/100;
 		$('#NAOut').html(NA + '%');
+		
+		//=======================================
+		//ND
+		$('#NDOut').html($classpoint.nd[$ClassNumber] + '%');
 		
 		//=======================================
 		//SW(スター集中度)
