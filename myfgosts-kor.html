@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>페그오 자작 서번트 스테이터스 계산기</title>
+<link rel="stylesheet" type="text/css">
+<script src="jquery-1.12.3.min.js"></script>
+<script src="scriptfgos.js"></script>
+<style>
+	table {
+		border-collapse: collapse;
+	}
+	td {
+		text-align: center; 
+		vertical-align: middle;
+		border: 1px solid;
+	}
+	tr.th {
+		font-weight: bold;
+	}
+	td.th {
+		font-weight: bold;
+	}
+</style>
+</head>
+<!--Made in 貴金属@silverclock96-->
+<body>
+<form>
+<p>페그오 자작 서번트 스테이터스 계산기</p>
+
+<p>Originated by 貴金属(@silverclock96)<br />
+<a href="http://you96.web.fc2.com/library/huebutop.html" target="_top">如月電脳図書館</a></p>
+
+<p>@silverclock96의 코멘트:<br />
+페그오 서번트의 스테이터스는 패러미터와 관계가 있다.<br />그 이야기를 듣고 자작 서번트의 패러미터를 FGO 스테이터스로 변환하는 웹 페이지를 만들어 봤습니다.<br />망상이나, FGO풍 카드 일러스트를 만들 때 스테이터스란을 만들 때 사용해 주세요.<br /><br /></p>
+
+<p>등급 <input type="radio" id="R0" name="Rare" value="0" /> <label for="R0">☆0</label> <input type="radio" id="R1" name="Rare" value="1" /> <label for="R1">☆1</label> <input type="radio" id="R2" name="Rare" value="2" /> <label for="R2">☆2</label> <input type="radio" id="R3" name="Rare" value="3" /> <label for="R3">☆3</label> <input type="radio" id="R4" name="Rare" value="4" /> <label for="R4">☆4</label> <input type="radio" id="R5" name="Rare" value="5" checked /> <label for="R5">☆5</label></p>
+
+<p>클래스 <select name="Class">
+	<optgroup id="MainClass" label="정규 클래스">
+		<option value="Saber" selected>세이버</option>
+		<option value="Archer">아처</option>
+		<option value="Lancer">랜서</option>
+		<option value="Rider">라이더</option>
+		<option value="Caster">캐스터</option>
+		<option value="Assassin">어새신</option>
+		<option value="Berserker">버서커</option>
+	</optgroup>
+	<optgroup id="ExtraClass" label="엑스트라 클래스">
+		<option value="Shielder">실더</option>
+		<option value="Ruler">룰러</option>
+		<option value="Avenger">어벤저</option>
+		<option value="Alterego">얼터에고</option>
+		<option value="MoonCancer">문캔서</option>
+		<option value="Foreigner">포리너</option>
+	</optgroup>
+</select>
+</p>
+
+<p>스테이터스 분배 <input type="radio" id="S1" name="State" value="1" /> <label for="S1">HP 편중</label> <input type="radio" id="S2" name="State" value="2" /> <label for="S2">HP 중시</label> <input type="radio" id="S3" name="State" value="3" checked /> <label for="S3">밸런스형</label> <input type="radio" id="S4" name="State" value="4" /> <label for="S4">ATK 중시</label> <input type="radio" id="S5" name="State" value="5" /> <label for="S5">ATK 편중</label> <input type="radio" id="S6" name="State" value="6" /> <label for="S6">알트리아 펜드래곤 [릴리]</label></p>
+
+<p>공격 패턴 <input type="radio" id="BMB" name="BM" value="BMB" checked /> <label for="BMB">물리형</label> <input type="radio" id="BMM" name="BM" value="BMM" /> <label for="BMM">마술형</label></p>
+
+<p>근력 <select name="Kin">
+	<option value="EX" selected>EX</option>
+	<option value="A2">A++</option><option value="A1">A+</option><option value="A">A</option><option value="Am">A-</option>
+	<option value="B2">B++</option><option value="B1">B+</option><option value="B">B</option><option value="Bm">B-</option>
+	<option value="C2">C++</option><option value="C1">C+</option><option value="C">C</option><option value="Cm">C-</option>
+	<option value="D2">D++</option><option value="D1">D+</option><option value="D">D</option><option value="Dm">D-</option>
+	<option value="E2">E++</option><option value="E1">E+</option><option value="E">E</option><option value="Em">E-</option>
+</select></p>
+
+<p>내구 <select name="Tai">
+	<option value="EX" selected>EX</option>
+	<option value="A2">A++</option><option value="A1">A+</option><option value="A">A</option><option value="Am">A-</option>
+	<option value="B2">B++</option><option value="B1">B+</option><option value="B">B</option><option value="Bm">B-</option>
+	<option value="C2">C++</option><option value="C1">C+</option><option value="C">C</option><option value="Cm">C-</option>
+	<option value="D2">D++</option><option value="D1">D+</option><option value="D">D</option><option value="Dm">D-</option>
+	<option value="E2">E++</option><option value="E1">E+</option><option value="E">E</option><option value="Em">E-</option>
+</select></p>
+
+<p>민첩 <select name="Bin">
+	<option value="EX" selected>EX</option>
+	<option value="A2">A++</option><option value="A1">A+</option><option value="A">A</option><option value="Am">A-</option>
+	<option value="B2">B++</option><option value="B1">B+</option><option value="B">B</option><option value="Bm">B-</option>
+	<option value="C2">C++</option><option value="C1">C+</option><option value="C">C</option><option value="Cm">C-</option>
+	<option value="D2">D++</option><option value="D1">D+</option><option value="D">D</option><option value="Dm">D-</option>
+	<option value="E2">E++</option><option value="E1">E+</option><option value="E">E</option><option value="Em">E-</option>
+</select></p>
+
+<p>마력 <select name="Mar">
+	<option value="EX" selected>EX</option>
+	<option value="A2">A++</option><option value="A1">A+</option><option value="A">A</option><option value="Am">A-</option>
+	<option value="B2">B++</option><option value="B1">B+</option><option value="B">B</option><option value="Bm">B-</option>
+	<option value="C2">C++</option><option value="C1">C+</option><option value="C">C</option><option value="Cm">C-</option>
+	<option value="D2">D++</option><option value="D1">D+</option><option value="D">D</option><option value="Dm">D-</option>
+	<option value="E2">E++</option><option value="E1">E+</option><option value="E">E</option><option value="Em">E-</option>
+</select></p>
+
+<p>행운 <select name="Kou">
+	<option value="EX" selected>EX</option>
+	<option value="A2">A++</option><option value="A1">A+</option><option value="A">A</option><option value="Am">A-</option>
+	<option value="B2">B++</option><option value="B1">B+</option><option value="B">B</option><option value="Bm">B-</option>
+	<option value="C2">C++</option><option value="C1">C+</option><option value="C">C</option><option value="Cm">C-</option>
+	<option value="D2">D++</option><option value="D1">D+</option><option value="D">D</option><option value="Dm">D-</option>
+	<option value="E2">E++</option><option value="E1">E+</option><option value="E">E</option><option value="Em">E-</option>
+</select></p>
+
+<p>Arts 매수 <input type="radio" id="AC1" name="Arts" value="1" /> <label for="AC1">1 copy</label> <input type="radio" id="AC2" name="Arts" value="2" checked /> <label for="AC2">2 copies</label> <input type="radio" id="AC3" name="Arts" value="3" /> <label for="AC3">3 copies</label></p>
+
+<p>Arts 히트 수 <input type="radio" id="AH1" name="AH" value="1" /> <label for="AH1">1</label> <input type="radio" id="AH2" name="AH" value="2" checked /> <label for="AH2">2</label> <input type="radio" id="AH3" name="AH" value="3" /> <label for="AH3">3</label> <input type="radio" id="AH4" name="AH" value="4" /> <label for="AH4">4</label> <input type="radio" id="AH5" name="AH" value="5" /> <label for="AH5">5</label> <input type="radio" id="AH6" name="AH" value="6" /> <label for="AH6">6</label></p>
+
+<p>스타 발생률 <input type="radio" id="SR1" name="Star" value="SR1" checked> <label for="SR1">일반형</label> <input type="radio" id="SR2" name="Star" value="SR2"> <label for="SR2">초기형</label></p>
+
+<p><button type="button" id="btn">계산</button></p>
+</form>
+<form>
+<table>
+<tbody>
+<tr class="th">
+	<td colspan="2">클래스</td>
+	<td>ATK</td>
+	<td rowspan="2">LV1</td>
+	<td rowspan="2">MAX</td>
+	<td rowspan="2">LV100</td>
+</tr>
+<tr class="th">
+	<td colspan="2">등급</td>
+	<td>HP</td>
+</tr>
+<tr id="result1" style="visibility: collapse;">
+	<td colspan="2" id="ClassOut" name="ClassOut" />
+	<td id="ATKOut1" name="ATKOut1" colspan="2" />
+	<td id="ATKOut2" name="ATKOut2" />
+	<td id="ATKOut3" name="ATKOut3" />
+</tr>
+<tr id="result2" style="visibility: collapse;">
+	<td colspan="2" id="RareOut" name="RareOut" />
+	<td id="HPOut1" name="HPOut1" colspan="2" />
+	<td id="HPOut2" name="HPOut2" />
+	<td id="HPOut3" name="HPOut3" />
+</tr>
+<tr class="th">
+	<td colspan="2">NP 획득률</td>
+	<td rowspan="2" colspan="2">스타 집중도</td>
+	<td rowspan="2">스타 발생률</td>
+	<td rowspan="2">즉사율</td>
+</tr>
+<tr class="th">
+	<td>ATK</td>
+	<td>DEF</td>
+</tr>
+<tr id="result3" style="visibility: collapse;">
+	<td id="NAOut" name="NAOut" />
+	<td />
+	<td id="SWOut" name="SWOut"  colspan="2" />
+	<td id="SROut" name="SROut" />
+	<td id="DROut" name="DROut" />
+</tr>
+</tbody>
+</table>
+</form>
+</body>
+</html>
