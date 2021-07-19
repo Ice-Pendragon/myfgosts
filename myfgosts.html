@@ -7,12 +7,20 @@
 <script src="jquery-1.12.3.min.js"></script>
 <script src="scriptfgos.js"></script>
 <style>
-    textarea {
-        min-width: 100px;
-        min-height: 80px;
-        max-width:  400px;
-        max-height: 200px;
-    }
+	table {
+		border-collapse: collapse;
+	}
+	td {
+		text-align: center; 
+		vertical-align: middle;
+		border: 1px solid;
+	}
+	tr.th {
+		font-weight: bold;
+	}
+	td.th {
+		font-weight: bold;
+	}
 </style>
 </head>
 <!--Made in 貴金属@silverclock96-->
@@ -26,81 +34,131 @@
 <p>@silverclock96のコメント:<br />
 Fate/Grand Orderのサーヴァントステータスはサーヴァントパラメーターと関係がある。<br />そんな話を聞いたので、「ぼくがかんがえたサーヴァント」のパラメーターをFGOステータスに変換するページをつくってみました。<br />妄想・FGO風カードイラストを作るときのステータス欄を作るときのためにお使いください。<br /><br /></p>
 
-<p>レアリティ<br /> <input type="radio" id="R0" name="Rare" value="R0" /> <label for="R0">☆0</label> <input type="radio" id="R1" name="Rare" value="R1" /> <label for="R1">☆1</label> <input type="radio" id="R1" name="Rare" value="R2" /> <label for="R2">☆2</label> <input type="radio" id="R1" name="Rare" value="R3" /> <label for="R3">☆3</label> <input type="radio" id="R1" name="Rare" value="R4" /> <label for="R4">☆4</label> <input type="radio" id="R1" name="Rare" value="R5" /> <label for="R5">☆5</label></p>
+<p>レアリティ<input type="radio" id="R0" name="Rare" value="0" /> <label for="R0">☆0</label> <input type="radio" id="R1" name="Rare" value="1" /> <label for="R1">☆1</label> <input type="radio" id="R2" name="Rare" value="2" /> <label for="R2">☆2</label> <input type="radio" id="R3" name="Rare" value="3" /> <label for="R3">☆3</label> <input type="radio" id="R4" name="Rare" value="4" /> <label for="R4">☆4</label> <input type="radio" id="R5" name="Rare" value="5" checked /> <label for="R5">☆5</label></p>
 
-<p>クラス<br />
- <input type="radio" id="Saber" name="Class" value="Saber" /> <label for="Saber">セイバー</label>
- <input type="radio" id="Archer" name="Class" value="Archer" /> <label for="Archer">アーチャー</label>
- <input type="radio" id="Lancer" name="Class" value="Lancer" /> <label for="Lancer">ランサー</label>
- <input type="radio" id="Rider" name="Class" value="Rider" /> <label for="Rider">ライダー</label>
- <input type="radio" id="Caster" name="Class" value="Caster" /> <label for="Caster">キャスター</label>
- <input type="radio" id="Assassin" name="Class" value="Assassin" /> <label for="Assassin">アサシン</label>
- <input type="radio" id="Berserker" name="Class" value="Berserker" /> <label for="Berserker">バーサーカー</label><br />
- <input type="radio" id="Shielder" name="Class" value="Shielder" /> <label for="Shielder">シールダー</label>
- <input type="radio" id="Ruler" name="Class" value="Ruler" /> <label for="Ruler">ルーラー</label>
- <input type="radio" id="Avenger" name="Class" value="Avenger" /> <label for="Avenger">アヴェンジャー</label>
- <input type="radio" id="MoonCancer" name="Class" value="MoonCancer" /> <label for="MoonCancer">ムーンキャンサー</label>
- <input type="radio" id="Alterego" name="Class" value="Alterego" /> <label for="Alterego">アルターエゴ</label>
- <input type="radio" id="Foreigner" name="Class" value="Foreigner" /> <label for="Foreigner">フォーリナー</label>
+<p>クラス <select name="Class">
+	<optgroup id="MainClass" label="基本７クラス">
+		<option value="Saber" selected>セイバー</option>
+		<option value="Archer">アーチャー</option>
+		<option value="Lancer">ランサー</option>
+		<option value="Rider">ライダー</option>
+		<option value="Caster">キャスター</option>
+		<option value="Assassin">アサシン</option>
+		<option value="Berserker">バーサーカー</option>
+	</optgroup>
+	<optgroup id="ExtraClass" label="エクストラクラス">
+		<option value="Shielder">シールダー</option>
+		<option value="Ruler">ルーラー</option>
+		<option value="Avenger">アヴェンジャー</option>
+		<option value="Alterego">アルターエゴ</option>
+		<option value="MoonCancer">ムーンキャンサー</option>
+		<option value="Foreigner">フォーリナー</option>
+	</optgroup>
+</select>
 </p>
 
-<p>ステ傾向<br /> <input type="radio" id="S1" name="State" value="S1" /> <label for="S1">HP偏重</label> <input type="radio" id="S2" name="State" value="S2" /> <label for="S2">HP寄り</label> <input type="radio" id="S3" name="State" value="S3" /> <label for="S3">バランス</label> <input type="radio" id="S4" name="State" value="S4" /> <label for="S4">ATK寄り</label> <input type="radio" id="S5" name="State" value="S5" /> <label for="S5">ATK偏重</label> <input type="radio" id="S6" name="State" value="S6" /> <label for="S6">アルトリア〔リリィ〕</label></p>
+<p>ステ傾向 <input type="radio" id="S1" name="State" value="1" /> <label for="S1">HP偏重</label> <input type="radio" id="S2" name="State" value="2" /> <label for="S2">HP寄り</label> <input type="radio" id="S3" name="State" value="3" checked /> <label for="S3">バランス</label> <input type="radio" id="S4" name="State" value="4" /> <label for="S4">ATK寄り</label> <input type="radio" id="S5" name="State" value="5" /> <label for="S5">ATK偏重</label> <input type="radio" id="S6" name="State" value="6" /> <label for="S6">アルトリア〔リリィ〕</label></p>
 
-<p>攻撃パターン<br /> <input type="radio" id="BMB" name="BM" value="BMB" /> <label for="BMB">物理型</label> <input type="radio" id="BMM" name="BM" value="BMM" /> <label for="BMM">魔術型</label></p>
+<p>攻撃パターン <input type="radio" id="BMB" name="BM" value="BMB" checked /> <label for="BMB">物理型</label> <input type="radio" id="BMM" name="BM" value="BMM" /> <label for="BMM">魔術型</label></p>
 
-<p>筋力<br /> <input type="radio" id="KinEX" name="Kin" value="KinEX" /> <label for="KinEX">EX</label><br />
- <input type="radio" id="KinA2" name="Kin" value="KinA2" /> <label for="KinA2">A++</label> <input type="radio" id="KinA1" name="Kin" value="KinA1" /> <label for="KinA1">A+</label> <input type="radio" id="KinA" name="Kin" value="KinA" /> <label for="KinA">A</label> <input type="radio" id="KinAm" name="Kin" value="KinAm" /> <label for="KinAm">A-</label><br />
- <input type="radio" id="KinB2" name="Kin" value="KinB2" /> <label for="KinB2">B++</label> <input type="radio" id="KinB1" name="Kin" value="KinB1" /> <label for="KinB1">B+</label> <input type="radio" id="KinB" name="Kin" value="KinB" /> <label for="KinB">B</label> <input type="radio" id="KinBm" name="Kin" value="KinBm" /> <label for="KinBm">B-</label><br />
- <input type="radio" id="KinC2" name="Kin" value="KinC2" /> <label for="KinC2">C++</label> <input type="radio" id="KinC1" name="Kin" value="KinC1" /> <label for="KinC1">C+</label> <input type="radio" id="KinC" name="Kin" value="KinC" /> <label for="KinC">C</label> <input type="radio" id="KinCm" name="Kin" value="KinCm" /> <label for="KinCm">C-</label><br />
- <input type="radio" id="KinD2" name="Kin" value="KinD2" /> <label for="KinD2">D++</label> <input type="radio" id="KinD1" name="Kin" value="KinD1" /> <label for="KinD1">D+</label> <input type="radio" id="KinD" name="Kin" value="KinD" /> <label for="KinD">D</label> <input type="radio" id="KinDm" name="Kin" value="KinDm" /> <label for="KinDm">D-</label><br />
- <input type="radio" id="KinE2" name="Kin" value="KinE2" /> <label for="KinE2">E++</label> <input type="radio" id="KinE1" name="Kin" value="KinE1" /> <label for="KinE1">E+</label> <input type="radio" id="KinE" name="Kin" value="KinE" /> <label for="KinE">E</label> <input type="radio" id="KinEm" name="Kin" value="KinEm" /> <label for="KinEm">E-</label>
-</p>
+<p>筋力 <select name="Kin">
+	<option value="EX" selected>EX</option>
+	<option value="A2">A++</option><option value="A1">A+</option><option value="A">A</option><option value="Am">A-</option>
+	<option value="B2">B++</option><option value="B1">B+</option><option value="B">B</option><option value="Bm">B-</option>
+	<option value="C2">C++</option><option value="C1">C+</option><option value="C">C</option><option value="Cm">C-</option>
+	<option value="D2">D++</option><option value="D1">D+</option><option value="D">D</option><option value="Dm">D-</option>
+	<option value="E2">E++</option><option value="E1">E+</option><option value="E">E</option><option value="Em">E-</option>
+</select></p>
 
-<p>耐久<br /> <input type="radio" id="TaiEX" name="Tai" value="TaiEX" /> <label for="TaiEX">EX</label><br />
- <input type="radio" id="TaiA2" name="Tai" value="TaiA2" /> <label for="TaiA2">A++</label> <input type="radio" id="TaiA1" name="Tai" value="TaiA1" /> <label for="TaiA1">A+</label> <input type="radio" id="TaiA" name="Tai" value="TaiA" /> <label for="TaiA">A</label> <input type="radio" id="TaiAm" name="Tai" value="TaiAm" /> <label for="TaiAm">A-</label><br />
- <input type="radio" id="TaiB2" name="Tai" value="TaiB2" /> <label for="TaiB2">B++</label> <input type="radio" id="TaiB1" name="Tai" value="TaiB1" /> <label for="TaiB1">B+</label> <input type="radio" id="TaiB" name="Tai" value="TaiB" /> <label for="TaiB">B</label> <input type="radio" id="TaiBm" name="Tai" value="TaiBm" /> <label for="TaiBm">B-</label><br />
- <input type="radio" id="TaiC2" name="Tai" value="TaiC2" /> <label for="TaiC2">C++</label> <input type="radio" id="TaiC1" name="Tai" value="TaiC1" /> <label for="TaiC1">C+</label> <input type="radio" id="TaiC" name="Tai" value="TaiC" /> <label for="TaiC">C</label> <input type="radio" id="TaiCm" name="Tai" value="TaiCm" /> <label for="TaiCm">C-</label><br />
- <input type="radio" id="TaiD2" name="Tai" value="TaiD2" /> <label for="TaiD2">D++</label> <input type="radio" id="TaiD1" name="Tai" value="TaiD1" /> <label for="TaiD1">D+</label> <input type="radio" id="TaiD" name="Tai" value="TaiD" /> <label for="TaiD">D</label> <input type="radio" id="TaiDm" name="Tai" value="TaiDm" /> <label for="TaiDm">D-</label><br />
- <input type="radio" id="TaiE2" name="Tai" value="TaiE2" /> <label for="TaiE2">E++</label> <input type="radio" id="TaiE1" name="Tai" value="TaiE1" /> <label for="TaiE1">E+</label> <input type="radio" id="TaiE" name="Tai" value="TaiE" /> <label for="TaiE">E</label> <input type="radio" id="TaiEm" name="Tai" value="TaiEm" /> <label for="TaiEm">E-</label>
-</p>
+<p>耐久 <select name="Tai">
+	<option value="EX" selected>EX</option>
+	<option value="A2">A++</option><option value="A1">A+</option><option value="A">A</option><option value="Am">A-</option>
+	<option value="B2">B++</option><option value="B1">B+</option><option value="B">B</option><option value="Bm">B-</option>
+	<option value="C2">C++</option><option value="C1">C+</option><option value="C">C</option><option value="Cm">C-</option>
+	<option value="D2">D++</option><option value="D1">D+</option><option value="D">D</option><option value="Dm">D-</option>
+	<option value="E2">E++</option><option value="E1">E+</option><option value="E">E</option><option value="Em">E-</option>
+</select></p>
 
-<p>敏捷<br /> <input type="radio" id="BinEX" name="Bin" value="BinEX" /> <label for="BinEX">EX</label><br />
- <input type="radio" id="BinA2" name="Bin" value="BinA2" /> <label for="BinA2">A++</label> <input type="radio" id="BinA1" name="Bin" value="BinA1" /> <label for="BinA1">A+</label> <input type="radio" id="BinA" name="Bin" value="BinA" /> <label for="BinA">A</label> <input type="radio" id="BinAm" name="Bin" value="BinAm" /> <label for="BinAm">A-</label><br />
- <input type="radio" id="BinB2" name="Bin" value="BinB2" /> <label for="BinB2">B++</label> <input type="radio" id="BinB1" name="Bin" value="BinB1" /> <label for="BinB1">B+</label> <input type="radio" id="BinB" name="Bin" value="BinB" /> <label for="BinB">B</label> <input type="radio" id="BinBm" name="Bin" value="BinBm" /> <label for="BinBm">B-</label><br />
- <input type="radio" id="BinC2" name="Bin" value="BinC2" /> <label for="BinC2">C++</label> <input type="radio" id="BinC1" name="Bin" value="BinC1" /> <label for="BinC1">C+</label> <input type="radio" id="BinC" name="Bin" value="BinC" /> <label for="BinC">C</label> <input type="radio" id="BinCm" name="Bin" value="BinCm" /> <label for="BinCm">C-</label><br />
- <input type="radio" id="BinD2" name="Bin" value="BinD2" /> <label for="BinD2">D++</label> <input type="radio" id="BinD1" name="Bin" value="BinD1" /> <label for="BinD1">D+</label> <input type="radio" id="BinD" name="Bin" value="BinD" /> <label for="BinD">D</label> <input type="radio" id="BinDm" name="Bin" value="BinDm" /> <label for="BinDm">D-</label><br />
- <input type="radio" id="BinE2" name="Bin" value="BinE2" /> <label for="BinE2">E++</label> <input type="radio" id="BinE1" name="Bin" value="BinE1" /> <label for="BinE1">E+</label> <input type="radio" id="BinE" name="Bin" value="BinE" /> <label for="BinE">E</label> <input type="radio" id="BinEm" name="Bin" value="BinEm" /> <label for="BinEm">E-</label>
-</p>
+<p>敏捷 <select name="Bin">
+	<option value="EX" selected>EX</option>
+	<option value="A2">A++</option><option value="A1">A+</option><option value="A">A</option><option value="Am">A-</option>
+	<option value="B2">B++</option><option value="B1">B+</option><option value="B">B</option><option value="Bm">B-</option>
+	<option value="C2">C++</option><option value="C1">C+</option><option value="C">C</option><option value="Cm">C-</option>
+	<option value="D2">D++</option><option value="D1">D+</option><option value="D">D</option><option value="Dm">D-</option>
+	<option value="E2">E++</option><option value="E1">E+</option><option value="E">E</option><option value="Em">E-</option>
+</select></p>
 
-<p>魔力<br /> <input type="radio" id="MarEX" name="Mar" value="MarEX" /> <label for="MarEX">EX</label><br />
- <input type="radio" id="MarA2" name="Mar" value="MarA2" /> <label for="MarA2">A++</label> <input type="radio" id="MarA1" name="Mar" value="MarA1" /> <label for="MarA1">A+</label> <input type="radio" id="MarA" name="Mar" value="MarA" /> <label for="MarA">A</label> <input type="radio" id="MarAm" name="Mar" value="MarAm" /> <label for="MarAm">A-</label><br />
- <input type="radio" id="MarB2" name="Mar" value="MarB2" /> <label for="MarB2">B++</label> <input type="radio" id="MarB1" name="Mar" value="MarB1" /> <label for="MarB1">B+</label> <input type="radio" id="MarB" name="Mar" value="MarB" /> <label for="MarB">B</label> <input type="radio" id="MarBm" name="Mar" value="MarBm" /> <label for="MarBm">B-</label><br />
- <input type="radio" id="MarC2" name="Mar" value="MarC2" /> <label for="MarC2">C++</label> <input type="radio" id="MarC1" name="Mar" value="MarC1" /> <label for="MarC1">C+</label> <input type="radio" id="MarC" name="Mar" value="MarC" /> <label for="MarC">C</label> <input type="radio" id="MarCm" name="Mar" value="MarCm" /> <label for="MarCm">C-</label><br />
- <input type="radio" id="MarD2" name="Mar" value="MarD2" /> <label for="MarD2">D++</label> <input type="radio" id="MarD1" name="Mar" value="MarD1" /> <label for="MarD1">D+</label> <input type="radio" id="MarD" name="Mar" value="MarD" /> <label for="MarD">D</label> <input type="radio" id="MarDm" name="Mar" value="MarDm" /> <label for="MarDm">D-</label><br />
- <input type="radio" id="MarE2" name="Mar" value="MarE2" /> <label for="MarE2">E++</label> <input type="radio" id="MarE1" name="Mar" value="MarE1" /> <label for="MarE1">E+</label> <input type="radio" id="MarE" name="Mar" value="MarE" /> <label for="MarE">E</label> <input type="radio" id="MarEm" name="Mar" value="MarEm" /> <label for="MarEm">E-</label>
-</p>
+<p>魔力 <select name="Mar">
+	<option value="EX" selected>EX</option>
+	<option value="A2">A++</option><option value="A1">A+</option><option value="A">A</option><option value="Am">A-</option>
+	<option value="B2">B++</option><option value="B1">B+</option><option value="B">B</option><option value="Bm">B-</option>
+	<option value="C2">C++</option><option value="C1">C+</option><option value="C">C</option><option value="Cm">C-</option>
+	<option value="D2">D++</option><option value="D1">D+</option><option value="D">D</option><option value="Dm">D-</option>
+	<option value="E2">E++</option><option value="E1">E+</option><option value="E">E</option><option value="Em">E-</option>
+</select></p>
 
-<p>幸運<br /> <input type="radio" id="LucEX" name="Luc" value="LucEX" /> <label for="LucEX">EX</label><br />
- <input type="radio" id="LucA2" name="Luc" value="LucA2" /> <label for="LucA2">A++</label> <input type="radio" id="LucA1" name="Luc" value="LucA1" /> <label for="LucA1">A+</label> <input type="radio" id="LucA" name="Luc" value="LucA" /> <label for="LucA">A</label> <input type="radio" id="LucAm" name="Luc" value="LucAm" /> <label for="LucAm">A-</label><br />
- <input type="radio" id="LucB2" name="Luc" value="LucB2" /> <label for="LucB2">B++</label> <input type="radio" id="LucB1" name="Luc" value="LucB1" /> <label for="LucB1">B+</label> <input type="radio" id="LucB" name="Luc" value="LucB" /> <label for="LucB">B</label> <input type="radio" id="LucBm" name="Luc" value="LucBm" /> <label for="LucBm">B-</label><br />
- <input type="radio" id="LucC2" name="Luc" value="LucC2" /> <label for="LucC2">C++</label> <input type="radio" id="LucC1" name="Luc" value="LucC1" /> <label for="LucC1">C+</label> <input type="radio" id="LucC" name="Luc" value="LucC" /> <label for="LucC">C</label> <input type="radio" id="LucCm" name="Luc" value="LucCm" /> <label for="LucCm">C-</label><br />
- <input type="radio" id="LucD2" name="Luc" value="LucD2" /> <label for="LucD2">D++</label> <input type="radio" id="LucD1" name="Luc" value="LucD1" /> <label for="LucD1">D+</label> <input type="radio" id="LucD" name="Luc" value="LucD" /> <label for="LucD">D</label> <input type="radio" id="LucDm" name="Luc" value="LucDm" /> <label for="LucDm">D-</label><br />
- <input type="radio" id="LucE2" name="Luc" value="LucE2" /> <label for="LucE2">E++</label> <input type="radio" id="LucE1" name="Luc" value="LucE1" /> <label for="LucE1">E+</label> <input type="radio" id="LucE" name="Luc" value="LucE" /> <label for="LucE">E</label> <input type="radio" id="LucEm" name="Luc" value="LucEm" /> <label for="LucEm">E-</label>
-</p>
+<p>幸運 <select name="Kou">
+	<option value="EX" selected>EX</option>
+	<option value="A2">A++</option><option value="A1">A+</option><option value="A">A</option><option value="Am">A-</option>
+	<option value="B2">B++</option><option value="B1">B+</option><option value="B">B</option><option value="Bm">B-</option>
+	<option value="C2">C++</option><option value="C1">C+</option><option value="C">C</option><option value="Cm">C-</option>
+	<option value="D2">D++</option><option value="D1">D+</option><option value="D">D</option><option value="Dm">D-</option>
+	<option value="E2">E++</option><option value="E1">E+</option><option value="E">E</option><option value="Em">E-</option>
+</select></p>
 
-<p>アーツ枚数<br /> <input type="radio" id="A1" name="Arts" value="A1" /> <label for="A1">1枚</label> <input type="radio" id="A2" name="Arts" value="A2" /> <label for="A2">2枚</label> <input type="radio" id="A3" name="Arts" value="A3" /> <label for="A3">3枚</label></p>
+<p>アーツ枚数 <input type="radio" id="AC1" name="Arts" value="1" /> <label for="A1">1枚</label> <input type="radio" id="AC2" name="Arts" value="2" checked /> <label for="AC2">2枚</label> <input type="radio" id="AC3" name="Arts" value="3" /> <label for="A3">3枚</label></p>
 
-<p>スター発生率<br /> <input type="radio" id="SR1" name="Star" value="SR1" checked="checked"> <label for="SR1">通常</label> <input type="radio" id="SR2" name="Star" value="SR2"> <label for="SR1">初期</label></p>
+<p>アーツヒット数 <input type="radio" id="AH1" name="AH" value="1" /> <label for="AH1">1</label> <input type="radio" id="AH2" name="AH" value="2" checked /> <label for="AH2">2</label> <input type="radio" id="AH3" name="AH" value="3" /> <label for="AH3">3</label> <input type="radio" id="AH4" name="AH" value="4" /> <label for="AH4">4</label> <input type="radio" id="AH5" name="AH" value="5" /> <label for="AH5">5</label> <input type="radio" id="AH6" name="AH" value="6" /> <label for="AH6">6</label></p>
 
-<p><button type="button" id="btn">クリック</button></p>
+<p>スター発生率 <input type="radio" id="SR1" name="Star" value="SR1" checked="checked"> <label for="SR1">通常</label> <input type="radio" id="SR2" name="Star" value="SR2"> <label for="SR1">初期</label></p>
+
+<p><button type="button" id="btn">計算する</button></p>
 </form>
 <form>
-<p><textarea id="OutPut" name="OutPut" cols="40" row="6">                
-                ここに出力結果が出ます
-                
-                
-
-</textarea></p>
+<table>
+<tbody>
+<tr class="th">
+	<td colspan="2">クラス</td>
+	<td>ATK</td>
+	<td rowspan="2">LV1</td>
+	<td rowspan="2">MAX</td>
+	<td rowspan="2">LV100</td>
+</tr>
+<tr class="th">
+	<td colspan="2">レアリティ</td>
+	<td>HP</td>
+</tr>
+<tr id="result1" style="visibility: collapse;">
+	<td colspan="2" id="ClassOut" name="ClassOut" />
+	<td id="ATKOut1" name="ATKOut1" colspan="2" />
+	<td id="ATKOut2" name="ATKOut2" />
+	<td id="ATKOut3" name="ATKOut3" />
+</tr>
+<tr id="result2" style="visibility: collapse;">
+	<td colspan="2" id="RareOut" name="RareOut" />
+	<td id="HPOut1" name="HPOut1" colspan="2" />
+	<td id="HPOut2" name="HPOut2" />
+	<td id="HPOut3" name="HPOut3" />
+</tr>
+<tr class="th">
+	<td colspan="2">獲得NP基準値</td>
+	<td rowspan="2" colspan="2">SW<br />（スター集中度）</td>
+	<td rowspan="2">SR<br />（スター発生率）</td>
+	<td rowspan="2">DR<br />（即死率）</td>
+</tr>
+<tr class="th">
+	<td>N/A<br />（攻撃時）</td>
+	<td>N/D<br />（被撃時）</td>
+</tr>
+<tr id="result3" style="visibility: collapse;">
+	<td id="NAOut" name="NAOut" />
+	<td />
+	<td id="SWOut" name="SWOut"  colspan="2" />
+	<td id="SROut" name="SROut" />
+	<td id="DROut" name="DROut" />
+</tr>
+</tbody>
+</table>
 </form>
 </body>
 </html>
