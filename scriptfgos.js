@@ -13,19 +13,19 @@ $(function () {
 			//	剣	弓	槍	騎	術	殺	狂
 			//	盾	裁	讐	分	月	降
 			hp:[1.01, 0.98, 1.02, 0.96, 0.98, 0.95, 0.9,
-				1.01, 1.0, 0.88, 0.96, 1.05, 1.0],
+				1.01, 1.0, 0.88, 0.96, 1.05, 1.0, 0.95],
 			atk:[1.01, 1.02, 0.98, 0.97, 0.94, 0.96, 1.03,
-				0.99, 0.95, 1.05, 1.02, 0.94, 1.0],
+				0.99, 0.95, 1.05, 1.02, 0.94, 1.0, 1.02],
 			na:[1.5, 1.55, 1.45, 1.55, 1.6, 1.45, 1.4,
-				1.5, 1.5, 1.45, 1.55, 1.6, 1.5],
+				1.5, 1.5, 1.45, 1.55, 1.6, 1.5, 1.55],
 			nd:[3, 3, 4, 3, 3, 4, 5,
-				3, 3, 5, 4, 3, 3],
+				3, 3, 5, 4, 3, 3, 3],
 			sr:[10, 8, 12, 9, 11, 25, 5,
-				10, 10, 6, 10, 15, 15],
+				10, 10, 6, 10, 15, 15, 20],
 			sw:[100, 150, 90, 200, 50, 100, 10,
-				100, 100, 30, 100, 50, 150],
+				100, 100, 30, 100, 50, 150, 100],
 			dr:[35, 45, 40, 50, 60, 55, 65,
-				35, 35, 10, 50, 1, 10]
+				35, 35, 10, 50, 1, 10, 30]
 		};
 		const $statepoint = {
 			hp:[1.1, 1.05, 1.0, 0.95, 0.9, 0.85],
@@ -88,6 +88,7 @@ $(function () {
 		var $atk = [];
 		var $atkrate = 0;
 		var $grailrate = Math.floor(99000 / ($rarepoint.lvmax[$Rarity] - 1)) / 1000;
+		var $grailrate2 = Math.floor(119000 / ($rarepoint.lvmax[$Rarity] - 1)) / 1000;
 		
 		if($('input[name="BM"]:checked').val() == "BMM"){
 			$atkrate = $parapoint.pp[$Parameter.MGI];
@@ -102,14 +103,18 @@ $(function () {
 		$hp[1] = Math.floor($rarepoint.hpmax[$Rarity] * $classpoint.hp[$ClassNumber] * $statepoint.hp[$Tendency] * $parapoint.pp[$Parameter.CON]);
 		$atk[2] = $atk[0] + Math.floor(($atk[1] - $atk[0]) * $grailrate);
 		$hp[2] = $hp[0] + Math.floor(($hp[1] - $hp[0]) * $grailrate);
+		$atk[3] = $atk[0] + Math.floor(($atk[1] - $atk[0]) * $grailrate2);
+		$hp[3] = $hp[0] + Math.floor(($hp[1] - $hp[0]) * $grailrate2);
 		
 		$('#lvOut').html('LV' + $rarepoint.lvmax[$Rarity]);
 		$('#ATKOut1').html($atk[0]);
 		$('#ATKOut2').html($atk[1]);
 		$('#ATKOut3').html($atk[2]);
+		$('#ATKOut4').html($atk[3]);
 		$('#HPOut1').html($hp[0]);
 		$('#HPOut2').html($hp[1]);
 		$('#HPOut3').html($hp[2]);
+		$('#HPOut4').html($hp[3]);
 		
 		//=======================================
 		//NA(NP獲得率基本値)
@@ -141,9 +146,9 @@ $(function () {
 		
 		var SR;
 		if($('[name="Star"]:checked').val() == "SR1"){
-			SR=Math.floor(10*$classpoint.sr[$ClassNumber]*$parapoint.pp[$Parameter.AGI])/10;
+			SR=Math.round(10*$classpoint.sr[$ClassNumber]*$parapoint.pp[$Parameter.AGI])/10;
 		}else if($('[name="Star"]:checked').val() == "SR2"){
-			SR=Math.floor(10*$classpoint.sr[$ClassNumber]*((1+$parapoint.pp[$Parameter.AGI])/2))/10;
+			SR=Math.round(10*$classpoint.sr[$ClassNumber]*((1+$parapoint.pp[$Parameter.AGI])/2))/10;
 		}
 		$('#SROut').html(SR + '%');
 		
