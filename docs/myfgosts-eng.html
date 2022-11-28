@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>FGO status calculator for custom servants</title>
+<link rel="stylesheet" type="text/css">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous"></script>
+<script src="scriptfgos.js"></script>
+<style>
+	table {
+		border-collapse: collapse;
+	}
+	td {
+		text-align: center; 
+		vertical-align: middle;
+		border: 1px solid;
+	}
+	tr.th {
+		font-weight: bold;
+	}
+	td.th {
+		font-weight: bold;
+	}
+</style>
+</head>
+<!--Made in 貴金属@silverclock96-->
+<body>
+<form>
+<p>FGO status calculator for custom servants</p>
+
+<p>Originated by 貴金属(@silverclock96)<br />
+<a href="http://you96.web.fc2.com/library/huebutop.html" target="_top">如月電脳図書館</a></p>
+
+<p>Comments from @silverclock96:<br />
+Stats of servants in FGO depends on his/her parameters.<br />Hearing that, I made this webpage that converts "custom servant"'s parameters into Fate/Grand Order status.<br />Please use this webpage when you make custom FGO card illust and need to fill his/her stats, or just imagine something.<br /><br /></p>
+
+<p>Rarity <input type="radio" id="R0" name="Rare" value="0" /> <label for="R0">☆0</label> <input type="radio" id="R1" name="Rare" value="1" /> <label for="R1">☆1</label> <input type="radio" id="R2" name="Rare" value="2" /> <label for="R2">☆2</label> <input type="radio" id="R3" name="Rare" value="3" /> <label for="R3">☆3</label> <input type="radio" id="R4" name="Rare" value="4" /> <label for="R4">☆4</label> <input type="radio" id="R5" name="Rare" value="5" checked /> <label for="R5">☆5</label></p>
+
+<p>Class <select name="Class">
+	<optgroup id="MainClass" label="Main Classes">
+		<option value="Saber" selected>Saber</option>
+		<option value="Archer">Archer</option>
+		<option value="Lancer">Lancer</option>
+		<option value="Rider">Rider</option>
+		<option value="Caster">Caster</option>
+		<option value="Assassin">Assassin</option>
+		<option value="Berserker">Berserker</option>
+	</optgroup>
+	<optgroup id="ExtraClass" label="Extra Classes">
+		<option value="Shielder">Shielder</option>
+		<option value="Ruler">Ruler</option>
+		<option value="Avenger">Avenger</option>
+		<option value="Alterego">Alterego</option>
+		<option value="MoonCancer">MoonCancer</option>
+		<option value="Foreigner">Foreigner</option>
+		<option value="Pretender">Pretender</option>
+	</optgroup>
+</select>
+</p>
+
+<p>Tendency of ATK/HP<br /> <input type="radio" id="S1" name="State" value="1" /> <label for="S1">Most HP</label> <input type="radio" id="S2" name="State" value="2" /> <label for="S2">More HP</label> <input type="radio" id="S3" name="State" value="3" checked /> <label for="S3">Balanced</label> <input type="radio" id="S4" name="State" value="4" /> <label for="S4">More ATK</label> <input type="radio" id="S5" name="State" value="5" /> <label for="S5">Most ATK</label> <input type="radio" id="S6" name="State" value="6" /> <label for="S6">Artoria Lily</label></p>
+
+<p>Attack Type <input type="radio" id="BMB" name="BM" value="BMB" checked /> <label for="BMB">Physical</label> <input type="radio" id="BMM" name="BM" value="BMM" /> <label for="BMM">Magical</label></p>
+
+<p>Strength <select name="Kin">
+	<option value="EX" selected>EX</option>
+	<option value="A2">A++</option><option value="A1">A+</option><option value="A">A</option><option value="Am">A-</option>
+	<option value="B2">B++</option><option value="B1">B+</option><option value="B">B</option><option value="Bm">B-</option>
+	<option value="C2">C++</option><option value="C1">C+</option><option value="C">C</option><option value="Cm">C-</option>
+	<option value="D2">D++</option><option value="D1">D+</option><option value="D">D</option><option value="Dm">D-</option>
+	<option value="E2">E++</option><option value="E1">E+</option><option value="E">E</option><option value="Em">E-</option>
+</select></p>
+
+<p>Constitution <select name="Tai">
+	<option value="EX" selected>EX</option>
+	<option value="A2">A++</option><option value="A1">A+</option><option value="A">A</option><option value="Am">A-</option>
+	<option value="B2">B++</option><option value="B1">B+</option><option value="B">B</option><option value="Bm">B-</option>
+	<option value="C2">C++</option><option value="C1">C+</option><option value="C">C</option><option value="Cm">C-</option>
+	<option value="D2">D++</option><option value="D1">D+</option><option value="D">D</option><option value="Dm">D-</option>
+	<option value="E2">E++</option><option value="E1">E+</option><option value="E">E</option><option value="Em">E-</option>
+</select></p>
+
+<p>Agility <select name="Bin">
+	<option value="EX" selected>EX</option>
+	<option value="A2">A++</option><option value="A1">A+</option><option value="A">A</option><option value="Am">A-</option>
+	<option value="B2">B++</option><option value="B1">B+</option><option value="B">B</option><option value="Bm">B-</option>
+	<option value="C2">C++</option><option value="C1">C+</option><option value="C">C</option><option value="Cm">C-</option>
+	<option value="D2">D++</option><option value="D1">D+</option><option value="D">D</option><option value="Dm">D-</option>
+	<option value="E2">E++</option><option value="E1">E+</option><option value="E">E</option><option value="Em">E-</option>
+</select></p>
+
+<p>Magical Power <select name="Mar">
+	<option value="EX" selected>EX</option>
+	<option value="A2">A++</option><option value="A1">A+</option><option value="A">A</option><option value="Am">A-</option>
+	<option value="B2">B++</option><option value="B1">B+</option><option value="B">B</option><option value="Bm">B-</option>
+	<option value="C2">C++</option><option value="C1">C+</option><option value="C">C</option><option value="Cm">C-</option>
+	<option value="D2">D++</option><option value="D1">D+</option><option value="D">D</option><option value="Dm">D-</option>
+	<option value="E2">E++</option><option value="E1">E+</option><option value="E">E</option><option value="Em">E-</option>
+</select></p>
+
+<p>Luck <select name="Kou">
+	<option value="EX" selected>EX</option>
+	<option value="A2">A++</option><option value="A1">A+</option><option value="A">A</option><option value="Am">A-</option>
+	<option value="B2">B++</option><option value="B1">B+</option><option value="B">B</option><option value="Bm">B-</option>
+	<option value="C2">C++</option><option value="C1">C+</option><option value="C">C</option><option value="Cm">C-</option>
+	<option value="D2">D++</option><option value="D1">D+</option><option value="D">D</option><option value="Dm">D-</option>
+	<option value="E2">E++</option><option value="E1">E+</option><option value="E">E</option><option value="Em">E-</option>
+</select></p>
+
+<p>Arts Cards <input type="radio" id="AC1" name="Arts" value="1" /> <label for="AC1">1 copy</label> <input type="radio" id="AC2" name="Arts" value="2" checked /> <label for="AC2">2 copies</label> <input type="radio" id="AC3" name="Arts" value="3" /> <label for="AC3">3 copies</label></p>
+
+<p>Arts Hits <input type="radio" id="AH1" name="AH" value="1" /> <label for="AH1">1</label> <input type="radio" id="AH2" name="AH" value="2" checked /> <label for="AH2">2</label> <input type="radio" id="AH3" name="AH" value="3" /> <label for="AH3">3</label> <input type="radio" id="AH4" name="AH" value="4" /> <label for="AH4">4</label> <input type="radio" id="AH5" name="AH" value="5" /> <label for="AH5">5</label> <input type="radio" id="AH6" name="AH" value="6" /> <label for="AH6">6</label></p>
+
+<p>Star Generation <input type="radio" id="SR1" name="Star" value="SR1" checked> <label for="SR1">Normal</label> <input type="radio" id="SR2" name="Star" value="SR2"> <label for="SR2">Earlier Type</label></p>
+
+<p><button type="button" id="btn">Calculate</button></p>
+</form>
+<form>
+<table>
+<tbody>
+<tr class="th">
+	<td colspan="2">Class</td>
+	<td>ATK</td>
+	<td rowspan="2">LV1</td>
+	<td rowspan="2" id="lvOut" name="lvOut">MAX</td>
+	<td rowspan="2">LV100</td>
+	<td rowspan="2">LV120</td>
+</tr>
+<tr class="th">
+	<td colspan="2">Rarity</td>
+	<td>HP</td>
+</tr>
+<tr id="result1" style="visibility: collapse;">
+	<td colspan="2" id="ClassOut" name="ClassOut" />
+	<td id="ATKOut1" name="ATKOut1" colspan="2" />
+	<td id="ATKOut2" name="ATKOut2" />
+	<td id="ATKOut3" name="ATKOut3" />
+	<td id="ATKOut4" name="ATKOut4" />
+</tr>
+<tr id="result2" style="visibility: collapse;">
+	<td colspan="2" id="RareOut" name="RareOut" />
+	<td id="HPOut1" name="HPOut1" colspan="2" />
+	<td id="HPOut2" name="HPOut2" />
+	<td id="HPOut3" name="HPOut3" />
+	<td id="HPOut4" name="HPOut4" />
+</tr>
+<tr class="th">
+	<td colspan="2">NP Charge</td>
+	<td rowspan="2" colspan="2">Star Absortion</td>
+	<td rowspan="2" colspan="2">Star Generation</td>
+	<td rowspan="2">Death Rate</td>
+</tr>
+<tr class="th">
+	<td>ATK</td>
+	<td>DEF</td>
+</tr>
+<tr id="result3" style="visibility: collapse;">
+	<td id="NAOut" name="NAOut" />
+	<td id="NDOut" name="NDOut" />
+	<td id="SWOut" name="SWOut" colspan="2" />
+	<td id="SROut" name="SROut" colspan="2" />
+	<td id="DROut" name="DROut" />
+</tr>
+</tbody>
+</table>
+</form>
+</body>
+</html>
