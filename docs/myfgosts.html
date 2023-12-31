@@ -1,27 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
 <meta charset="utf-8">
 <title>俺鯖FGOステータス計算機</title>
 <link rel="stylesheet" type="text/css">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha512-jGsMH83oKe9asCpkOVkBnUrDDTp8wl+adkB2D+//JtlxO4SrLoJdhbOysIFQJloQFD+C4Fl1rMsQZF76JjV0eQ==" crossorigin="anonymous"></script>
 <script src="scriptfgos.js"></script>
-<style>
-	table {
-		border-collapse: collapse;
-	}
-	td {
-		text-align: center; 
-		vertical-align: middle;
-		border: 1px solid;
-	}
-	tr.th {
-		font-weight: bold;
-	}
-	td.th {
-		font-weight: bold;
-	}
-</style>
+<link rel="stylesheet" href="stylefgos.css">
 </head>
 <!--Made in 貴金属@silverclock96-->
 <body>
@@ -59,54 +44,76 @@ Fate/Grand Orderのサーヴァントステータスはサーヴァントパラ�
 </select>
 </p>
 
-<p>ステ傾向 <input type="radio" id="S1" name="State" value="1" /> <label for="S1">HP偏重</label> <input type="radio" id="S2" name="State" value="2" /> <label for="S2">HP寄り</label> <input type="radio" id="S3" name="State" value="3" checked /> <label for="S3">バランス</label> <input type="radio" id="S4" name="State" value="4" /> <label for="S4">ATK寄り</label> <input type="radio" id="S5" name="State" value="5" /> <label for="S5">ATK偏重</label> <input type="radio" id="S6" name="State" value="6" /> <label for="S6">アルトリア〔リリィ〕</label></p>
+<p>ステ傾向 <select name="State">
+	<option value="1">HP偏重</option>
+	<option value="2">HP寄り</option>
+	<option value="3" selected>バランス</option>
+	<option value="4">ATK寄り</option>
+	<option value="5">ATK偏重</option>
+	<option value="6">アルトリア〔リリィ〕</option>
+</select></p>
 
 <p>攻撃パターン <input type="radio" id="BMB" name="BM" value="BMB" checked /> <label for="BMB">物理型</label> <input type="radio" id="BMM" name="BM" value="BMM" /> <label for="BMM">魔術型</label></p>
 
-<p>筋力 <select name="Kin">
-	<option value="EX" selected>EX</option>
-	<option value="A2">A++</option><option value="A1">A+</option><option value="A">A</option><option value="Am">A-</option>
-	<option value="B2">B++</option><option value="B1">B+</option><option value="B">B</option><option value="Bm">B-</option>
-	<option value="C2">C++</option><option value="C1">C+</option><option value="C">C</option><option value="Cm">C-</option>
-	<option value="D2">D++</option><option value="D1">D+</option><option value="D">D</option><option value="Dm">D-</option>
-	<option value="E2">E++</option><option value="E1">E+</option><option value="E">E</option><option value="Em">E-</option>
-</select></p>
-
-<p>耐久 <select name="Tai">
-	<option value="EX" selected>EX</option>
-	<option value="A2">A++</option><option value="A1">A+</option><option value="A">A</option><option value="Am">A-</option>
-	<option value="B2">B++</option><option value="B1">B+</option><option value="B">B</option><option value="Bm">B-</option>
-	<option value="C2">C++</option><option value="C1">C+</option><option value="C">C</option><option value="Cm">C-</option>
-	<option value="D2">D++</option><option value="D1">D+</option><option value="D">D</option><option value="Dm">D-</option>
-	<option value="E2">E++</option><option value="E1">E+</option><option value="E">E</option><option value="Em">E-</option>
-</select></p>
-
-<p>敏捷 <select name="Bin">
-	<option value="EX" selected>EX</option>
-	<option value="A2">A++</option><option value="A1">A+</option><option value="A">A</option><option value="Am">A-</option>
-	<option value="B2">B++</option><option value="B1">B+</option><option value="B">B</option><option value="Bm">B-</option>
-	<option value="C2">C++</option><option value="C1">C+</option><option value="C">C</option><option value="Cm">C-</option>
-	<option value="D2">D++</option><option value="D1">D+</option><option value="D">D</option><option value="Dm">D-</option>
-	<option value="E2">E++</option><option value="E1">E+</option><option value="E">E</option><option value="Em">E-</option>
-</select></p>
-
-<p>魔力 <select name="Mar">
-	<option value="EX" selected>EX</option>
-	<option value="A2">A++</option><option value="A1">A+</option><option value="A">A</option><option value="Am">A-</option>
-	<option value="B2">B++</option><option value="B1">B+</option><option value="B">B</option><option value="Bm">B-</option>
-	<option value="C2">C++</option><option value="C1">C+</option><option value="C">C</option><option value="Cm">C-</option>
-	<option value="D2">D++</option><option value="D1">D+</option><option value="D">D</option><option value="Dm">D-</option>
-	<option value="E2">E++</option><option value="E1">E+</option><option value="E">E</option><option value="Em">E-</option>
-</select></p>
-
-<p>幸運 <select name="Kou">
-	<option value="EX" selected>EX</option>
-	<option value="A2">A++</option><option value="A1">A+</option><option value="A">A</option><option value="Am">A-</option>
-	<option value="B2">B++</option><option value="B1">B+</option><option value="B">B</option><option value="Bm">B-</option>
-	<option value="C2">C++</option><option value="C1">C+</option><option value="C">C</option><option value="Cm">C-</option>
-	<option value="D2">D++</option><option value="D1">D+</option><option value="D">D</option><option value="Dm">D-</option>
-	<option value="E2">E++</option><option value="E1">E+</option><option value="E">E</option><option value="Em">E-</option>
-</select></p>
+<table class="faketable"><tbody>
+	<tr class="top">
+		<td>
+			<p>筋力 <select name="Kin">
+				<option value="EX" selected>EX</option>
+				<option value="A2">A++</option><option value="A1">A+</option><option value="A">A</option><option value="Am">A-</option>
+				<option value="B2">B++</option><option value="B1">B+</option><option value="B">B</option><option value="Bm">B-</option>
+				<option value="C2">C++</option><option value="C1">C+</option><option value="C">C</option><option value="Cm">C-</option>
+				<option value="D2">D++</option><option value="D1">D+</option><option value="D">D</option><option value="Dm">D-</option>
+				<option value="E2">E++</option><option value="E1">E+</option><option value="E">E</option><option value="Em">E-</option>
+			</select></p>
+		</td>
+		<td>
+			<p>耐久 <select name="Tai">
+				<option value="EX" selected>EX</option>
+				<option value="A2">A++</option><option value="A1">A+</option><option value="A">A</option><option value="Am">A-</option>
+				<option value="B2">B++</option><option value="B1">B+</option><option value="B">B</option><option value="Bm">B-</option>
+				<option value="C2">C++</option><option value="C1">C+</option><option value="C">C</option><option value="Cm">C-</option>
+				<option value="D2">D++</option><option value="D1">D+</option><option value="D">D</option><option value="Dm">D-</option>
+				<option value="E2">E++</option><option value="E1">E+</option><option value="E">E</option><option value="Em">E-</option>
+			</select></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>敏捷 <select name="Bin">
+				<option value="EX" selected>EX</option>
+				<option value="A2">A++</option><option value="A1">A+</option><option value="A">A</option><option value="Am">A-</option>
+				<option value="B2">B++</option><option value="B1">B+</option><option value="B">B</option><option value="Bm">B-</option>
+				<option value="C2">C++</option><option value="C1">C+</option><option value="C">C</option><option value="Cm">C-</option>
+				<option value="D2">D++</option><option value="D1">D+</option><option value="D">D</option><option value="Dm">D-</option>
+				<option value="E2">E++</option><option value="E1">E+</option><option value="E">E</option><option value="Em">E-</option>
+			</select></p>
+		</td>
+		<td>
+			<p>魔力 <select name="Mar">
+				<option value="EX" selected>EX</option>
+				<option value="A2">A++</option><option value="A1">A+</option><option value="A">A</option><option value="Am">A-</option>
+				<option value="B2">B++</option><option value="B1">B+</option><option value="B">B</option><option value="Bm">B-</option>
+				<option value="C2">C++</option><option value="C1">C+</option><option value="C">C</option><option value="Cm">C-</option>
+				<option value="D2">D++</option><option value="D1">D+</option><option value="D">D</option><option value="Dm">D-</option>
+				<option value="E2">E++</option><option value="E1">E+</option><option value="E">E</option><option value="Em">E-</option>
+			</select></p>
+		</td>
+	</tr>
+	<tr class="bottom">
+		<td>
+			<p>幸運 <select name="Kou">
+				<option value="EX" selected>EX</option>
+				<option value="A2">A++</option><option value="A1">A+</option><option value="A">A</option><option value="Am">A-</option>
+				<option value="B2">B++</option><option value="B1">B+</option><option value="B">B</option><option value="Bm">B-</option>
+				<option value="C2">C++</option><option value="C1">C+</option><option value="C">C</option><option value="Cm">C-</option>
+				<option value="D2">D++</option><option value="D1">D+</option><option value="D">D</option><option value="Dm">D-</option>
+				<option value="E2">E++</option><option value="E1">E+</option><option value="E">E</option><option value="Em">E-</option>
+			</select></p>
+		</td>
+		<td></td>
+	</tr>
+</tbody></table>
 
 <p>アーツ枚数 <input type="radio" id="AC1" name="Arts" value="1" /> <label for="A1">1枚</label> <input type="radio" id="AC2" name="Arts" value="2" checked /> <label for="AC2">2枚</label> <input type="radio" id="AC3" name="Arts" value="3" /> <label for="A3">3枚</label></p>
 
@@ -117,53 +124,51 @@ Fate/Grand Orderのサーヴァントステータスはサーヴァントパラ�
 <p><button type="button" id="btn">計算する</button></p>
 </form>
 <form>
-<table>
-<tbody>
-<tr class="th">
-	<td colspan="2">クラス</td>
-	<td>ATK</td>
-	<td rowspan="2">LV1</td>
-	<td rowspan="2" id="lvOut" name="lvOut">MAX</td>
-	<td rowspan="2">LV100</td>
-	<td rowspan="2">LV120</td>
-</tr>
-<tr class="th">
-	<td colspan="2">レアリティ</td>
-	<td>HP</td>
-</tr>
-<tr id="result1" style="visibility: collapse;">
-	<td colspan="2" id="ClassOut" name="ClassOut" />
-	<td id="ATKOut1" name="ATKOut1" colspan="2" />
-	<td id="ATKOut2" name="ATKOut2" />
-	<td id="ATKOut3" name="ATKOut3" />
-	<td id="ATKOut4" name="ATKOut4" />
-</tr>
-<tr id="result2" style="visibility: collapse;">
-	<td colspan="2" id="RareOut" name="RareOut" />
-	<td id="HPOut1" name="HPOut1" colspan="2" />
-	<td id="HPOut2" name="HPOut2" />
-	<td id="HPOut3" name="HPOut3" />
-	<td id="HPOut4" name="HPOut4" />
-</tr>
-<tr class="th">
-	<td colspan="2">獲得NP基準値</td>
-	<td rowspan="2" colspan="2">SW<br />（スター集中度）</td>
-	<td rowspan="2" colspan="2">SR<br />（スター発生率）</td>
-	<td rowspan="2">DR<br />（即死率）</td>
-</tr>
-<tr class="th">
-	<td>N/A<br />（攻撃時）</td>
-	<td>N/D<br />（被撃時）</td>
-</tr>
-<tr id="result3" style="visibility: collapse;">
-	<td id="NAOut" name="NAOut" />
-	<td id="NDOut" name="NDOut" />
-	<td id="SWOut" name="SWOut" colspan="2" />
-	<td id="SROut" name="SROut" colspan="2" />
-	<td id="DROut" name="DROut" />
-</tr>
-</tbody>
-</table>
+<table><tbody>
+	<tr class="th btop bleft bright">
+		<td colspan="2">クラス</td>
+		<td class="bleft bright">ATK</td>
+		<td rowspan="2">LV1</td>
+		<td rowspan="2" id="lvOut" name="lvOut">MAX</td>
+		<td rowspan="2">LV100</td>
+		<td rowspan="2">LV120</td>
+	</tr>
+	<tr class="th bbottom bleft bright">
+		<td colspan="2">レアリティ</td>
+		<td class="bleft bright">HP</td>
+	</tr>
+	<tr id="result1" class="bleft bright" style="visibility: collapse;">
+		<td colspan="2" id="ClassOut" name="ClassOut" />
+		<td id="ATKOut1" name="ATKOut1" colspan="2" class="bleft" />
+		<td id="ATKOut2" name="ATKOut2" />
+		<td id="ATKOut3" name="ATKOut3" />
+		<td id="ATKOut4" name="ATKOut4" />
+	</tr>
+	<tr id="result2" class="bleft bright" style="visibility: collapse;">
+		<td colspan="2" id="RareOut" name="RareOut" />
+		<td id="HPOut1" name="HPOut1" colspan="2" class="bleft" />
+		<td id="HPOut2" name="HPOut2" />
+		<td id="HPOut3" name="HPOut3" />
+		<td id="HPOut4" name="HPOut4" />
+	</tr>
+	<tr class="th btop bleft bright">
+		<td colspan="2" class="bright">獲得NP基準値</td>
+		<td rowspan="2" colspan="2">SW<br />（スター集中度）</td>
+		<td rowspan="2" colspan="2">SR<br />（スター発生率）</td>
+		<td rowspan="2">DR<br />（即死率）</td>
+	</tr>
+	<tr class="th bbottom bleft bright">
+		<td>N/A<br />（攻撃時）</td>
+		<td class="bright">N/D<br />（被撃時）</td>
+	</tr>
+	<tr id="result3" class="bbottom bleft bright" style="visibility: collapse;">
+		<td id="NAOut" name="NAOut" />
+		<td id="NDOut" name="NDOut" class="bright" />
+		<td id="SWOut" name="SWOut" colspan="2" />
+		<td id="SROut" name="SROut" colspan="2" />
+		<td id="DROut" name="DROut" />
+	</tr>
+</tbody></table>
 </form>
 </body>
 </html>

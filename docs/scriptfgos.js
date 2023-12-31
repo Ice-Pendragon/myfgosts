@@ -67,16 +67,14 @@ $(function () {
 		}else{
 			$Rarity = $RarityVisible;
 		}
-		console.log('レアリティ：' + $RarityVisible);
 		$('#RareOut').html($rarepoint.name[$RarityVisible]);
 		
 		//Check Class
 		$ClassNumber = $('select[name="Class"]')[0].selectedIndex;
-		console.log('クラス：' + $('select[name="Class"]')[0].value);
 		$('#ClassOut').html($('select[name="Class"]')[0][$ClassNumber].innerHTML);
 		
 		//Check Tendency of Status
-		$Tendency = parseInt($('[name="State"]:checked').val()) - 1;
+		$Tendency = $('select[name="State"]')[0].selectedIndex;
 		
 		//Check Parameter
 		$Parameter.STR = $('select[name="Kin"]')[0].selectedIndex;
@@ -84,11 +82,6 @@ $(function () {
 		$Parameter.AGI = $('select[name="Bin"]')[0].selectedIndex;
 		$Parameter.MGI = $('select[name="Mar"]')[0].selectedIndex;
 		$Parameter.LUC = $('select[name="Kou"]')[0].selectedIndex;
-		
-		//=======================================
-		document.getElementById("result1").style.visibility = "visible";
-		document.getElementById("result2").style.visibility = "visible";
-		document.getElementById("result3").style.visibility = "visible";
 		
 		//=======================================
 		//ATK/HP
@@ -165,6 +158,12 @@ $(function () {
 		
 		var DR = Math.floor(10*$classpoint.dr[$ClassNumber]*$parapoint.dr[$Parameter.MGI])/10;
 		$('#DROut').html(DR + '%');
+		
+		//=======================================
+		//Print result
+		document.getElementById("result1").style.visibility = "visible";
+		document.getElementById("result2").style.visibility = "visible";
+		document.getElementById("result3").style.visibility = "visible";
 		
 		//=======================================
 		})

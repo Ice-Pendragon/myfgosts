@@ -1,0 +1,42 @@
+table {
+	border-collapse: collapse;
+}
+td {
+	text-align: center; 
+	vertical-align: middle;
+	border: 1px solid rgba(none none none / 40%);
+}
+tr.th {
+	font-weight: bold;
+}
+tr.btop, td.btop {
+	border-top: 2px solid;
+}
+tr.bbottom, td.bbottom {
+	border-bottom: 2px solid;
+}
+tr.bleft, td.bleft {
+	border-left: 2px solid;
+}
+tr.bright, td.bright {
+	border-right: 2px solid;
+}
+table.faketable td {
+	text-align: left;
+	text-align-last: justify;
+	vertical-align: top;
+	border: none;
+	padding: 0;
+	margin: 0.5rem 0;
+}
+table.faketable tr.top td {
+	margin-top: 0;
+}
+table.faketable tr.bottom td {
+	margin-bottom: 0;
+}
+table.faketable p {
+	margin-top: inherit;
+	margin-bottom: inherit;
+	margin-right: 0.5rem;
+}
